@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<title>كريم فردوس</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body{
+    color:#fff;
+    text-align:center;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("bg.png.jpg") no-repeat center center/cover;
+
+    background-attachment: fixed;
+}
+
+.container{
+    max-width:420px;
+    margin:auto;
+    padding:25px 15px;
+}
+
+h1{
+    font-size:26px;
+    line-height:1.6;
+}
+
+.green{
+    color:#00ff99;
+}
+
+p{
+    margin:15px 0;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.product{
+    width:200px;
+    margin:20px auto;
+    display:block;
+    border-radius:15px;
+}
+
+.btn{
+    background:#ff2e2e;
+    border:none;
+    padding:15px;
+    width:100%;
+    border-radius:12px;
+    font-size:18px;
+    color:#fff;
+    cursor:pointer;
+}
+
+.note{
+    margin-top:15px;
+    font-size:13px;
+    color:#ccc;
+}
+
+/* مشاكل */
+.problems{
+    margin-top:60px;
+    padding:20px;
+}
+
+.problems h2{
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+/* كروت المكونات و الفوائد */
+.ing-card,
+.benefit-card{
+    background:#151515;
+    padding:22px;
+    border-radius:18px;
+    margin-bottom:20px;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    
+    /* دخول */
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s ease;
+}
+
+/* حواف متحركة */
+.ing-card::before,
+.benefit-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    padding:2px;
+    background:linear-gradient(90deg, transparent, #00ff99, transparent);
+    background-size:200% 100%;
+    animation:borderMove 3s linear infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+}
+
+/* حركة الضوء */
+@keyframes borderMove{
+    0%{ background-position:200% 0; }
+    100%{ background-position:-200% 0; }
+}
+
+/* كي تبان في السكرول */
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* hover تولي خضر كاملة */
+.ing-card:hover,
+.benefit-card:hover{
+    background:#00ff99;
+    color:#000;
+    box-shadow:0 0 25px #00ff99;
+    transform:scale(1.03);
+}
+
+/* ستايل العناوين */
+.section-title{
+    font-size:22px;
+    margin-bottom:25px;
+    position:relative;
+    display:inline-block;
+}
+
+.section-title::after{
+    content:"";
+    position:absolute;
+    bottom:-8px;
+    right:0;
+    width:60%;
+    height:3px;
+    background:#00ff99;
+    border-radius:5px;
+}
+
+.problems {
+    padding: 40px 20px;
+}
+
+.problem-card {
+    background: linear-gradient(145deg,#1a1a1a,#111);
+    padding: 18px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    transition: 0.3s ease;
+    border: 1px solid #222;
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,255,153,0.2);
+    border: 1px solid #00ff99;
+}
+
+.benefits {
+    padding: 60px 20px;
+}
+
+.benefits-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* الخط الأخضر تحت العنوان */
+.benefits-title::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #00ff99;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+    border-radius: 5px;
+    animation: lineGrow 0.8s ease forwards;
+}
+
+/* أنيميشن طلوع */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* أنيميشن الخط */
+@keyframes lineGrow {
+    from { width: 0; }
+    to { width: 70px; }
+}
+
+.usage {
+    padding: 60px 20px;
+}
+
+.usage-title {
+    font-size: 26px;
+    margin-bottom: 35px;
+    position: relative;
+    display: inline-block;
+}
+
+/* الخط تحت العنوان */
+.usage-title::after {
+    content: "";
+    width: 60px;
+    height: 3px;
+    background: orange;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    border-radius: 4px;
+}
+
+/* الكروت */
+.step {
+    background: #1a1a1a;
+    padding: 18px;
+    border-radius: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    border: 1px solid #222;
+    transition: 0.25s ease;
+}
+
+/* hover خفيف */
+.step:hover {
+    border: 1px solid orange;
+    transform: translateY(-3px);
+}
+
+/* الدائرة تاع الرقم */
+.step-number {
+    background: orange;
+    color: #000;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.why {
+    padding: 70px 20px;
+}
+
+/* العنوان */
+.why-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.why-title.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.why-title::after {
+    content: "";
+    width: 0;
+    height: 4px;
+    background: orange;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+    border-radius: 5px;
+    transition: 0.8s ease;
+}
+
+.why-title.active::after {
+    width: 80px;
+}
+
+/* الكارد */
+.why-card {
+    background: linear-gradient(145deg,#1a1a1a,#111);
+    padding: 20px;
+    border-radius: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #222;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.6s ease;
+}
+
+.why-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.why-card:hover {
+    border: 1px solid #00ff99;
+    box-shadow: 0 15px 35px rgba(0,255,153,0.15);
+}
+
+/* ===== WHY SECTION ONLY ===== */
+
+.why {
+  padding: 40px 15px;
+}
+
+.why h2 {
+  font-size: 26px;
+  margin-bottom: 35px;
+  position: relative;
+  display: inline-block;
+}
+
+.why h2::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  bottom: -10px;
+  right: 25%;
+  border-radius: 5px;
+}
+
+/* الكرت */
+.why .why-item {
+  background: linear-gradient(145deg, #111, #1c1c1c);
+  border-radius: 20px;
+  padding: 18px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  transition: 0.3s ease;
+}
+
+/* hover احترافي */
+.why .why-item:hover {
+  transform: translateY(-4px);
+  border: 1px solid #ffcc00;
+  box-shadow: 0 10px 30px rgba(255,204,0,0.25);
+}
+
+/* ايقونة الصح */
+.why .why-item span {
+  background: #00c853;
+  color: #fff;
+  padding: 6px 9px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 0 10px rgba(0,200,83,0.6);
+}
+
+/* النص */
+.why .why-item p {
+  margin: 0;
+  font-size: 15px;
+}
+/* ===== RAMADAN OFFER CARD ===== */
+
+.ramadan-offer{
+  padding:40px 15px;
+  display:flex;
+  justify-content:center;
+}
+
+.ramadan-card{
+  width:100%;
+  max-width:420px;
+  background: linear-gradient(145deg, #0f1f14, #07150d);
+  border-radius:22px;
+  padding:30px 20px;
+  text-align:center;
+  border:1px solid rgba(0,255,120,0.2);
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+  position:relative;
+  overflow:hidden;
+}
+
+/* شريط رمضان */
+.ramadan-badge{
+  background:linear-gradient(90deg,#00c853,#00ff95);
+  color:#000;
+  font-weight:700;
+  padding:6px 15px;
+  border-radius:50px;
+  display:inline-block;
+  margin-bottom:20px;
+  font-size:14px;
+}
+
+/* العنوان */
+.ramadan-card h3{
+  margin:10px 0 25px;
+  font-size:20px;
+  color:#fff;
+}
+
+/* السعر القديم */
+.old-price{
+  text-decoration:line-through;
+  color:#888;
+  font-size:16px;
+}
+
+/* السعر الجديد */
+.new-price{
+  margin:10px 0;
+}
+
+.new-price .number{
+  font-size:42px;
+  font-weight:700;
+  color:#fff;
+}
+
+.new-price .currency{
+  font-size:18px;
+  color:#ccc;
+}
+
+.save{
+  color:#00ff99;
+  font-size:14px;
+  margin-top:5px;
+}
+
+/* الزر */
+.ramadan-btn{
+  margin-top:25px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#e53935;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.ramadan-btn:hover{
+  background:#ff3d00;
+  transform:scale(1.03);
+}
+/* ===== URGENT SECTION ===== */
+
+.urgent-section{
+  padding:50px 15px;
+  text-align:center;
+}
+
+/* الكرت الأحمر */
+.urgent-card{
+  background: linear-gradient(135deg,#5a0000,#8b0000);
+  border-radius:22px;
+  padding:35px 20px;
+  box-shadow:0 15px 50px rgba(0,0,0,0.6);
+  animation: fadeUp 1s ease forwards;
+  opacity:0;
+  transform:translateY(40px);
+}
+
+/* عنوان يهتز خفيف */
+.urgent-title{
+  font-size:24px;
+  margin-bottom:20px;
+  animation: pulse 2s infinite;
+}
+
+/* النص */
+.urgent-sub{
+  color:#ddd;
+  margin-bottom:15px;
+}
+
+.urgent-list{
+  list-style:none;
+  padding:0;
+  margin:0 0 20px 0;
+}
+
+.urgent-list li{
+  margin:8px 0;
+  color:#ffb3b3;
+  font-size:15px;
+}
+
+.urgent-action{
+  font-weight:600;
+  font-size:17px;
+  color:#00ff99;
+}
+
+/* CTA */
+.cta-box{
+  margin-top:40px;
+}
+
+.cta-box h3{
+  font-size:22px;
+  margin-bottom:20px;
+}
+
+.cta-btn{
+    display:inline-block;
+    padding:18px 45px;
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    text-decoration:none;
+    position:relative;
+    overflow:hidden;
+
+    background:linear-gradient(45deg,#ff0000,#ff3b3b,#ff0000);
+    background-size:200% 200%;
+
+    box-shadow:0 10px 40px rgba(255,0,0,0.5);
+    transition:0.3s ease;
+}
+
+/* حركة متدرجة */
+.cta-btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 15px 50px rgba(255,0,0,0.7);
+    animation:gradientMove 2s infinite linear;
+}
+
+/* انيميشن الجريدينت */
+@keyframes gradientMove{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+/* تأثير لمعة تمر */
+.cta-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition:0.6s;
+}
+
+.cta-btn:hover::before{
+    left:100%;
+}
+/* Animations */
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.03);}
+  100%{transform:scale(1);}
+}
+
+@keyframes glow{
+  0%{box-shadow:0 0 0 rgba(255,0,0,0.5);}
+  50%{box-shadow:0 0 20px rgba(255,0,0,0.7);}
+  100%{box-shadow:0 0 0 rgba(255,0,0,0.5);}
+}
+
+/* الخلفية مع blur */
+.form-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:0.4s ease;
+    z-index:999;
+}
+
+/* لما تتفتح */
+.form-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* الصندوق */
+.form-box{
+    background:#0f0f0f;
+    width:90%;
+    max-width:400px;
+    padding:35px 25px;
+    border-radius:20px;
+    text-align:center;
+    position:relative;
+    transform:translateY(40px) scale(0.9);
+    transition:0.4s ease;
+    
+    /* Glow أحمر */
+    box-shadow:0 0 60px rgba(255,0,0,0.4);
+}
+
+/* انيميشن الدخول */
+.form-overlay.active .form-box{
+    transform:translateY(0) scale(1);
+}
+
+/* العنوان */
+.form-box h2{
+    color:#ff3b3b;
+    margin-bottom:20px;
+}
+
+/* الانبوت */
+.form-box input{
+    width:100%;
+    margin:10px 0;
+    padding:14px;
+    border-radius:12px;
+    border:none;
+    background:#1b1b1b;
+    color:#fff;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.form-box input:focus{
+    outline:none;
+    box-shadow:0 0 0 2px #ff3b3b;
+}
+
+/* زر الإرسال */
+.send-btn{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff0000,#ff4b4b);
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.send-btn:hover{
+    transform:scale(1.05);
+}
+
+/* رسالة النجاح */
+.success-msg{
+    margin-top:15px;
+    background:#0f5f36;
+    padding:12px;
+    border-radius:12px;
+    font-size:14px;
+    display:none;
+}
+
+/* زر الغلق */
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    cursor:pointer;
+    color:#aaa;
+}
+
+.close-btn:hover{
+    color:#fff;
+}
+
+/* Select احترافي */
+#quantity {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: linear-gradient(145deg, #1c1c1c, #111);
+  color: white;
+  padding: 12px 45px 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* Hover */
+#quantity:hover {
+  border-color: #ff2e2e;
+  box-shadow: 0 0 10px rgba(255,0,0,0.4);
+}
+
+/* Focus */
+#quantity:focus {
+  outline: none;
+  border-color: #ff0000;
+  box-shadow: 0 0 15px rgba(255,0,0,0.6);
+  transform: scale(1.05);
+}
+
+/* سهم مخصص */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  content: "⌄";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff2e2e;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.mini-timer {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #00ff9d;
+}
+
+#mini-countdown {
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: 700;
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #00ff9d;
+  }
+  50% {
+    transform: scale(1.12);
+    text-shadow: 0 0 20px #00ff9d, 0 0 40px #00ff9d;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #00ff9d;
+  }
+}
+
+.order-btn{
+  background: linear-gradient(45deg,#ff0000,#ff4d4d);
+  color:white;
+  padding:18px 40px;
+  font-size:22px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  transition:0.3s;
+  animation:pulse 1.5s infinite;
+}
+
+.order-btn:hover{
+  transform:scale(1.1);
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7);}
+  70%{box-shadow:0 0 0 20px rgba(255,0,0,0);}
+  100%{box-shadow:0 0 0 0 rgba(255,0,0,0);}
+}
+
+#orderModal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.form-box{
+  background:#111;
+  padding:30px;
+  width:380px;
+  border-radius:15px;
+  box-shadow:0 0 30px rgba(0,0,0,0.8);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>
+        🔥 تخلص من ألم البواسير <br>
+        <span class="green">بسرعة وبطريقة طبيعية</span>
+    </h1>
+
+    <p>
+        راحة سريعة • تقليل الالتهاب <br>
+        نتائج من أول استعمال
+    </p>
+
+<img src="bg.jpg" class="product">
+
+<button class="order-btn" onclick="openForm()">اطلب الآن</button>
+
+    <div class="note">
+        🚚 توصيل مجاني • 💵 الدفع عند الاستلام
+    </div>
+</div>
+
+<section class="problems">
+
+    <h2 class="section-title">❗ هل تعاني من</h2>
+
+    <div class="problem-card">
+        <span>ألم أثناء الجلوس؟</span>
+        <span>😣</span>
+    </div>
+
+    <div class="problem-card">
+        <span>حكة مزعجة ومستمرة؟</span>
+        <span>😖</span>
+    </div>
+
+    <div class="problem-card">
+        <span>تورم أو التهاب في منطقة البواسير؟</span>
+        <span>🔴</span>
+    </div>
+
+    <div class="problem-card">
+        <span>إحراج وعدم راحة يومية؟</span>
+        <span>😔</span>
+    </div>
+
+</section>
+
+<script>
+function openForm(){
+    document.getElementById("formBox").classList.add("active");
+}
+function closeForm(){
+    document.getElementById("formBox").classList.remove("active");
+}
+</script>
+
+<section class="ingredients">
+    <h2 class="benefits-title">
+        الحل الطبيعي بين يديك✅
+    </h2>
+    <img src="https://via.placeholder.com/300x220" class="main-img">
+
+    <div class="ing-card">🐪 <div><h3>ذروة الجمل</h3><p>مكون تقليدي معروف بخصائصه العلاجية</p></div></div>
+
+    <div class="ing-card">🌿 <div><h3>الزعتر</h3><p>مضاد طبيعي للالتهابات والبكتيريا</p></div></div>
+
+    <div class="ing-card">🌱 <div><h3>الشيا</h3><p>مرطب طبيعي يساعد على التئام الجلد</p></div></div>
+
+    <div class="ing-card">🌾 <div><h3>حبة السوداء</h3><p>معروفة بفوائدها العلاجية المتعددة</p></div></div>
+
+    <div class="ing-card">🌿 <div><h3>بدرة الشيح</h3><p>تهدئ البشرة وتعزز الشفاء</p></div></div>
+
+    <div class="ing-card">🌳 <div><h3>زيت الشجرة</h3><p>مطهر طبيعي ومهدئ للتهيج</p></div></div>
+</section>
+
+<section class="benefits">
+
+    <h2 class="benefits-title">
+        ماذا يقدم لك الكريم؟ ✅
+    </h2>
+
+    <div class="benefit-card">
+        ⚡
+        <p>يخفف الألم بسرعة</p>
+    </div>
+
+    <div class="benefit-card">
+        🩹
+        <p>يقلل الالتهاب والتورم</p>
+    </div>
+
+    <div class="benefit-card">
+        ✨
+        <p>يهدئ الحكة والحرقان</p>
+    </div>
+
+    <div class="benefit-card">
+        💚
+        <p>يساعد على تسريع التعافي</p>
+    </div>
+
+    <div class="benefit-card">
+        🌿
+        <p>مناسب للرجال والنساء</p>
+    </div>
+    
+    <div class="benefit-card">
+        🛡️
+        <p>استعمال خارجي آمن</p>
+    </div>    
+        
+</section>
+
+<script>
+const animatedElements = document.querySelectorAll('.ing-card, .benefit-card');
+
+window.addEventListener('scroll', () => {
+    animatedElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 60){
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+    
+<script>
+
+const items = document.querySelectorAll('.ing-card, .benefit-card');
+
+function revealOnScroll() {
+    items.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        
+        if (rect.top <= window.innerHeight - 80) {
+            el.classList.add('show');
+        }
+    });
+}
+
+/* يخدم أول ما تفتح الصفحة */
+window.addEventListener('load', revealOnScroll);
+
+/* يخدم أثناء السكرول */
+window.addEventListener('scroll', revealOnScroll);
+</script>
+
+<section class="usage">
+
+    <h2 class="usage-title">
+        طريقة الاستعمال 📦
+    </h2>
+
+    <div class="step">
+        <span>تنظيف المنطقة جيداً بالماء الفاتر</span>
+        <div class="step-number">1</div>
+    </div>
+
+    <div class="step">
+        <span>تجفيفها بلطف</span>
+        <div class="step-number">2</div>
+    </div>
+
+    <div class="step">
+        <span>وضع كمية مناسبة من الكريم مرتين يومياً</span>
+        <div class="step-number">3</div>
+    </div>
+
+    <div class="step">
+        <span>الاستمرار لمدة 7 إلى 14 يوم لأفضل نتيجة</span>
+        <div class="step-number">4</div>
+    </div>
+
+</section>
+<section class="why">
+  <h2>⭐ لماذا كريم فردوس؟</h2>
+
+  <div class="why-item">
+    <span>✔</span>
+    <p>تركيبة طبيعية 100%</p>
+  </div>
+
+  <div class="why-item">
+    <span>✔</span>
+    <p>بدون مواد كيميائية ضارة</p>
+  </div>
+
+  <div class="why-item">
+    <span>✔</span>
+    <p>نتائج سريعة</p>
+  </div>
+
+  <div class="why-item">
+    <span>✔</span>
+    <p>مكونات معروفة بفوائدها العلاجية</p>
+  </div>
+
+  <div class="why-item">
+    <span>✔</span>
+    <p>توصيل مجاني</p>
+  </div>
+</section>
+<section class="ramadan-offer">
+
+  <div class="ramadan-card">
+    <div class="ramadan-badge">🌙 عرض خاص برمضان</div>
+
+    <h3>علبتين بسعر مميز</h3>
+
+    <div class="price-box">
+      <span class="old-price">580 ألف</span>
+      <div class="new-price">
+        <span class="number">480</span>
+        <span class="currency">ألف</span>
+      </div>
+      <p class="save">🔥 وفر 100 ألف!</p>
+    </div>
+
+<div class="mini-timer">
+  ينتهي خلال:
+  <span id="mini-countdown"></span>
+</div>
+
+<button class="order-btn" onclick="openForm()">اطلب عرض رمضان</button>
+</section>
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
+        }
+    });
+},{ threshold: 0.3 });
+
+document.querySelectorAll('.why-title, .why-card')
+    .forEach(el => observer.observe(el));
+</script>
+<section class="urgent-section">
+
+  <div class="urgent-card">
+    <h2 class="urgent-title">
+      ⚠ لا تنتظر حتى تتفاقم الحالة
+    </h2>
+
+    <p class="urgent-sub">
+      كل يوم تأخير يعني:
+    </p>
+
+    <ul class="urgent-list">
+      <li>❌ ألم أكبر</li>
+      <li>❌ التهاب أكثر</li>
+      <li>❌ صعوبة في العلاج</li>
+    </ul>
+
+    <p class="urgent-action">
+      ابدأ اليوم واسترجع راحتك وثقتك 💚
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <h3>🛒 اطلب الآن قبل نفاد الكمية</h3>
+<button class="order-btn" onclick="openForm()">اطلب الآن</button>
+
+    </div>
+<div id="orderModal" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+">
+
+  <div style="
+  background:#111;
+  padding:30px;
+  width:350px;
+  border-radius:15px;
+  color:white;
+  ">
+
+
+    <div id="orderModal">
+  <div class="form-box">
+
+    <form id="orderForm">
+
+      <input type="text" name="name" placeholder="الاسم الكامل" required>
+      <input type="text" name="phone" placeholder="رقم الهاتف" required>
+      <label>اختر الولاية</label>
+       <select id="wilaya" required>
+         <option value="">اختر ولاية</option>
+       </select>
+      <label>اختر البلدية</label>
+       <select id="commune" required>
+         <option value="">اختر بلدية</option>
+          </select>
+      <input type="hidden" id="quantity" name="quantity">
+      <input type="hidden" id="price" name="price">
+
+<input type="number" id="quantity" min="1" value="1">
+
+      <div class="price-display">
+        السعر الإجمالي: <span id="totalPrice">0</span> دج
+      </div>
+
+      <input type="hidden" id="priceInput" name="price">
+
+      <button type="submit" class="order-btn">تأكيد الطلب</button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+const quantityInput = document.getElementById("quantity");
+const priceSpan = document.getElementById("price");
+const finalPriceInput = document.getElementById("finalPrice");
+
+quantityInput.addEventListener("input", function() {
+
+    let quantity = parseInt(quantityInput.value) || 1;
+    let totalPrice = 0;
+
+    if (quantity == 1) {
+        totalPrice = 290;
+    } 
+    else if (quantity == 2) {
+        totalPrice = 480; // عرض زوج علب
+    } 
+    else {
+        // من 3 علب وطالع نحسب 2400 للعلبة
+        totalPrice = quantity * 240;
+    }
+
+    priceSpan.textContent = totalPrice;
+    finalPriceInput.value = totalPrice;
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const overlay = document.getElementById("formOverlay");
+  const openBtns = document.querySelectorAll(".openForm");
+  const closeBtn = document.getElementById("closeForm");
+
+  const quantityInput = document.getElementById("quantity");
+  const priceSpan = document.getElementById("price");
+
+  if(!overlay || !closeBtn || !quantityInput || !priceSpan){
+    console.log("كاين عنصر ناقص في HTML");
+    return;
+  }
+
+  openBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      overlay.classList.add("active");
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if(e.target === overlay){
+      overlay.classList.remove("active");
+    }
+  });
+
+  quantityInput.addEventListener("input", () => {
+    let quantity = parseInt(quantityInput.value);
+    let totalPrice = 0;
+
+    if(quantity == 1){
+      totalPrice = 290;
+    } else if(quantity == 2){
+      totalPrice = 480;
+    } else {
+      totalPrice = quantity * 240;
+    }
+
+    priceSpan.textContent = totalPrice;
+  });
+
+});
+</script>
+
+<script>
+function startMiniTimer() {
+
+  function updateTimer() {
+    const now = new Date().getTime();
+
+    // نخلي العداد 24 ساعة من أول ما يدخل الزائر
+    const fullDay = 24 * 60 * 60 * 1000;
+
+    // نخزن وقت البداية في localStorage
+    if (!localStorage.getItem("offerStart")) {
+      localStorage.setItem("offerStart", now);
+    }
+
+    const startTime = localStorage.getItem("offerStart");
+    const diff = now - startTime;
+
+    const remaining = fullDay - (diff % fullDay);
+
+    const hours = Math.floor((remaining / (1000 * 60 * 60)));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+    document.getElementById("mini-countdown").innerText =
+      hours + "س " +
+      minutes + "د " +
+      seconds + "ث";
+  }
+
+  setInterval(updateTimer, 1000);
+  updateTimer();
+}
+
+startMiniTimer();
+</script>
+
+<script>
+
+function openForm(){
+  document.getElementById("orderModal").style.display="flex";
+}
+
+document.getElementById("quantity").addEventListener("input",function(){
+
+  let qty = parseInt(this.value);
+  let total = 0;
+
+  if(qty == 1){
+    total = 290;
+  }
+  else if(qty == 2){
+    total = 480;
+  }
+  else if(qty >= 3){
+    total = qty * 240;
+  }
+
+  document.getElementById("totalPrice").innerText = total;
+  document.getElementById("priceInput").value = total;
+
+});
+
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbzX9JT9t3kkbGzJxXGDHDiA8WHSNTQZxsYJCG7TIG_dqUyA35FeJvJeP3pdEhUmicA0/exec";
+
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // نحبسو الإرسال العادي
+
+  const qty = selectedQuantity; // هذا المتغير لازم يكون يتبدل كي يضغط على اطلب الآن
+  let total = 0;
+
+  if(qty == 1){
+    total = 290;
+  }
+  else if(qty == 2){
+    total = 480;
+  }
+  else if(qty >= 3){
+    total = qty * 240;
+  }
+
+  // نفرضو القيم
+  document.getElementById("quantity").value = qty;
+  document.getElementById("price").value = total;
+
+  const form = document.getElementById("orderForm");
+  const formData = new FormData(form);
+
+  fetch(scriptURL, { method: "POST", body: formData})
+    .then(response => {
+      alert("تم ارسال الطلب بنجاح");
+      form.reset();
+    })
+    .catch(error => alert("كاين مشكل في الإرسال"));
+
+});
+
+</script>
+</script>
+<script>
+
+document.getElementById("orderForm")
+.addEventListener("submit", function(e){
+
+  // نجبرو تحديث السعر قبل الإرسال
+  const qty = document.getElementById("quantity").value;
+  const priceInput = document.getElementById("price");
+
+  let total = 0;
+
+  if(qty == 1){
+    total = 290;
+  }
+  else if(qty == 2){
+    total = 480;
+  }
+  else if(qty >= 3){
+    total = qty * 240;
+  }
+
+  priceInput.value = total;
+
+});
+
+</script>
+<script>
+let selectedQuantity = 1;
+
+function orderNow(qty){
+  selectedQuantity = qty;
+  document.getElementById("orderModal").style.display = "flex";
+}
+</script>
+<script>
+
+const qtyInput = document.getElementById("quantity");
+const totalText = document.getElementById("totalPrice");
+
+function calculatePrice() {
+
+  let qty = parseInt(qtyInput.value) || 0;
+  let total = 0;
+
+  if(qty == 1){
+    total = 290;
+  }
+  else if(qty == 2){
+    total = 480;
+  }
+  else if(qty >= 3){
+    total = qty * 240;
+  }
+
+  totalText.innerText = total;
+}
+
+// نحسب أول مرة
+calculatePrice();
+
+// كل ما يتبدل العدد نحسب
+qtyInput.addEventListener("input", calculatePrice);
+
+</script>
+<script>
+fetch("algeria.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const wilayaSelect = document.getElementById("wilaya");
+    const communeSelect = document.getElementById("commune");
+
+    let wilayas = {};
+
+    data.forEach(item => {
+      if (!wilayas[item.wilaya_name]) {
+        wilayas[item.wilaya_name] = [];
+      }
+      wilayas[item.wilaya_name].push(item.commune_name);
+    });
+
+    // نحط خيار افتراضي
+    wilayaSelect.innerHTML = '<option value="">اختر الولاية</option>';
+
+    Object.keys(wilayas).forEach(wilaya => {
+      let option = document.createElement("option");
+      option.value = wilaya;
+      option.textContent = wilaya;
+      wilayaSelect.appendChild(option);
+    });
+
+    wilayaSelect.addEventListener("change", function() {
+
+      communeSelect.innerHTML = '<option value="">اختر البلدية</option>';
+
+      let communes = wilayas[this.value];
+
+      if (communes) {
+        communes.forEach(commune => {
+          let option = document.createElement("option");
+          option.value = commune;
+          option.textContent = commune;
+          communeSelect.appendChild(option);
+        });
+      }
+    });
+
+  })
+  .catch(error => {
+    console.log("Error loading JSON:", error);
+  });
+</script>
+
+</body>
+</html>
