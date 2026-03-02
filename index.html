@@ -811,6 +811,15 @@ p{
   }
 }
 
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-top: 5px;
+  resize: none;
+}
+
 </style>
 </head>
 
@@ -1104,6 +1113,10 @@ document.querySelectorAll('.why-title, .why-card')
        <select id="commune" required>
          <option value="">اختر بلدية</option>
           </select>
+          <div class="form-group">
+  <label>العنوان الكامل</label>
+  <input type="text" name="address" placeholder="اكتب عنوانك بالتفصيل" required>
+</div>
 
       <label>اختر عدد العلب:</label>
 
@@ -1294,6 +1307,7 @@ form.addEventListener("submit", function(e) {
     phone: form.phone.value,
     state: form.state.value,
     city: form.city.value,
+    address: document.querySelector('[name="address"]').value,
     quantity: form.quantity.value,
     price: form.price.value
   };
